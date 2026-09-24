@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Multi AI</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <main class="ai-grid">
+
+        <section class="ai-panel" id="gemini">
+            <header class="ai-header">
+                <h2>Gemini</h2>
+            </header>
+
+            <div class="ai-content">
+                <p class="placeholder">Esperando un prompt...</p>
+            </div>
+        </section>
+
+        <section class="ai-panel" id="chatgpt">
+            <header class="ai-header">
+                <h2>ChatGPT</h2>
+            </header>
+
+            <div class="ai-content">
+                <p class="placeholder">Esperando un prompt...</p>
+            </div>
+        </section>
+
+        <section class="ai-panel" id="mistral">
+            <header class="ai-header">
+                <h2>Mistral</h2>
+            </header>
+
+            <div class="ai-content">
+                <p class="placeholder">Esperando un prompt...</p>
+            </div>
+        </section>
+
+        <section class="ai-panel" id="groq">
+            <header class="ai-header">
+                <h2>Groq</h2>
+            </header>
+
+            <div class="ai-content">
+                <p class="placeholder">Esperando un prompt...</p>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="prompt-area">
+        <form class="prompt-box" id="prompt-form">
+
+            <textarea
+                id="prompt"
+                placeholder="Escribe tu prompt..."
+                rows="1"
+                autocomplete="off"
+            ></textarea>
+
+            <button type="submit" id="send-button">
+                Enviar
+            </button>
+
+        </form>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+</html>
