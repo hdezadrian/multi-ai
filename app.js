@@ -1,6 +1,5 @@
 document.addEventListener("DOMContentLoaded", function () {
 
-```
 // ========================================
 // ELEMENTOS DE LA INTERFAZ
 // ========================================
@@ -333,6 +332,5 @@ promptInput.addEventListener("keydown", function (event) {
         form.requestSubmit();
     }
 });
-```
 
 });
