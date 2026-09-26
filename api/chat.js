@@ -4,41 +4,25 @@ const openai = new OpenAI({
 apiKey: process.env.OPENAI_API_KEY
 });
 
+const gemini = new OpenAI({
+apiKey: process.env.GEMINI_API_KEY,
+baseURL: "https://generativelanguage.googleapis.com/v1beta/openai/"
+});
+
 async function askGemini(prompt) {
-const response = await fetch(
-`https://generativelanguage.googleapis.com/v1beta/models/${process.env.GEMINI_MODEL}:generateContent?key=${process.env.GEMINI_API_KEY}`,
+const response = await gemini.chat.completions.create({
+model: "gemini-3.8-flash",
+messages: [
 {
-method: "POST",
-headers: {
-"Content-Type": "application/json"
-},
-body: JSON.stringify({
-contents: [
-{
-parts: [
-{
-text: prompt
+role: "user",
+content: prompt
 }
 ]
-}
-]
-})
-}
-);
+});
 
 ```
-const data = await response.json();
-
-if (!response.ok) {
-    throw new Error(
-        data.error?.message || "Error en Gemini."
-    );
-}
-
 const text =
-    data.candidates?.[0]?.content?.parts
-        ?.map(part => part.text || "")
-        .join("") || "";
+    response.choices?.[0]?.message?.content || "";
 
 if (!text) {
     throw new Error("Gemini no devolvió texto.");
@@ -51,7 +35,7 @@ return text;
 
 async function askOpenAI(prompt) {
 const response = await openai.responses.create({
-model: process.env.OPENAI_MODEL,
+model: "gpt-5-mini",
 input: prompt
 });
 
@@ -75,7 +59,7 @@ headers: {
 "Authorization": `Bearer ${process.env.MISTRAL_API_KEY}`
 },
 body: JSON.stringify({
-model: process.env.MISTRAL_MODEL,
+model: "mistral-small-latest",
 messages: [
 {
 role: "user",
@@ -117,7 +101,7 @@ headers: {
 "Authorization": `Bearer ${process.env.GROQ_API_KEY}`
 },
 body: JSON.stringify({
-model: process.env.GROQ_MODEL,
+model: "openai/gpt-oss-120b",
 messages: [
 {
 role: "user",
