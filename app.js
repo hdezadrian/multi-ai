@@ -211,7 +211,7 @@ function showAllResponses(responses) {
 
             responseElement.className = "response";
 
-            responseElement.textContent = result.text || "";
+            responseElement.innerHTML = marked.parse(result.text || "");
 
             panel.appendChild(responseElement);
 
