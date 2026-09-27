@@ -59,7 +59,7 @@ headers: {
 "Authorization": `Bearer ${process.env.MISTRAL_API_KEY}`
 },
 body: JSON.stringify({
-model: "mistral-small-latest",
+model: "mistral-small-2603",
 messages: [
 {
 role: "user",
