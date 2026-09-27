@@ -20,7 +20,7 @@ content: prompt
 ]
 });
 
-```
+
 const text =
     response.choices?.[0]?.message?.content || "";
 
@@ -29,7 +29,7 @@ if (!text) {
 }
 
 return text;
-```
+
 
 }
 
@@ -39,13 +39,13 @@ model: "gpt-5-mini",
 input: prompt
 });
 
-```
+
 if (!response.output_text) {
     throw new Error("OpenAI no devolvió texto.");
 }
 
 return response.output_text;
-```
+
 
 }
 
@@ -70,7 +70,7 @@ content: prompt
 }
 );
 
-```
+
 const data = await response.json();
 
 if (!response.ok) {
@@ -87,7 +87,7 @@ if (!text) {
 }
 
 return text;
-```
+
 
 }
 
@@ -112,7 +112,7 @@ content: prompt
 }
 );
 
-```
+
 const data = await response.json();
 
 if (!response.ok) {
@@ -129,13 +129,12 @@ if (!text) {
 }
 
 return text;
-```
+
 
 }
 
 export default async function handler(req, res) {
 
-```
 if (req.method !== "POST") {
     return res.status(405).json({
         error: "Método no permitido."
@@ -198,6 +197,5 @@ return res.status(200).json({
     prompt: prompt,
     responses: responses
 });
-```
 
 }
