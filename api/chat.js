@@ -73,6 +73,9 @@ content: prompt
 
 const data = await response.json();
 
+console.log("MISTRAL STATUS:", response.status);
+console.log("MISTRAL DATA:", data);
+
 if (!response.ok) {
     throw new Error(
         data.error?.message || "Error en Mistral."
